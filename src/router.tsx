@@ -8,23 +8,23 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Games />,
+        element: <div>Games</div>,
       },
       {
         path: "/g/:gameid/",
-        element: <Game />,
+        element: <div>Game</div>,
       },
       {
         path: "/p/",
-        element: <Players />,
+        element: <div>Players</div>,
       },
       {
         path: "/p/:playerid/",
-        element: <Player />,
+        element: <div>Player</div>,
       },
       {
         path: "/l/",
-        element: <Leaderboard />,
+        element: <div>Leaderboard</div>,
       },
     ],
   },

@@ -1,12 +1,16 @@
 import SideNav from "./components/SideNav";
 import { Outlet } from "react-router-dom";
 
+import "./App.css";
+
 function App() {
   return (
-    <div>
+    <>
       <SideNav />
-      <Outlet />
-    </div>
+      <main className="flex-1 p-8">
+        <Outlet />
+      </main>
+    </>
   );
 }
 
