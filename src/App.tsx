@@ -1,10 +1,12 @@
-import "./App.css";
+import SideNav from "./components/SideNav";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <div>Welcome to SkateScore! :D</div>
-    </>
+    <div>
+      <SideNav />
+      <Outlet />
+    </div>
   );
 }
 
