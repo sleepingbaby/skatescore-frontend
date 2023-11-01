@@ -5,12 +5,10 @@ import "./App.css";
 
 function App() {
   return (
-    <>
+    <div className="w-full flex flex-row">
       <SideNav />
-      <main className="flex-1 p-8">
-        <Outlet />
-      </main>
-    </>
+      <Outlet />
+    </div>
   );
 }
 
