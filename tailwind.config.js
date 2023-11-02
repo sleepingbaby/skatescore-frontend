@@ -11,12 +11,15 @@ export default {
       lg: "976px",
       xl: "1440px",
     },
-    colors: {
-      text: "#040506",
-      background: "#FFFFFF",
-      primary: "#98A9B3",
-      secondary: "#C7D0D6",
-      accent: "#596D78",
+    extends: {
+      colors: {
+        text: "#040506",
+        background: "#F9FAFB",
+        white: "#FFFFFF",
+        primary: "#98A9B3",
+        secondary: "#C7D0D6",
+        accent: "#596D78",
+      },
     },
     fontFamily: {
       sans: ["Poppins", "sans-serif"],
