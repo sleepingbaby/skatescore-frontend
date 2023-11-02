@@ -2,11 +2,7 @@ import DaisyUIPlugin from "daisyui";
 
 / @type {import('tailwindcss').Config} */;
 export default {
-  content: [
-    "./src/index.html",
-    "./src/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
