@@ -11,7 +11,7 @@ export default {
       lg: "976px",
       xl: "1440px",
     },
-    extends: {
+    extend: {
       colors: {
         text: "#040506",
         background: "#F9FAFB",

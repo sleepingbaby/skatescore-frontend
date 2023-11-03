@@ -6,7 +6,7 @@ const SideNav = () => {
         className="my-8 p-1 px-3 w-full bg-white rounded-3xl"
         placeholder="Search players..."
       ></input>
-      <ul className="flex flex-col gap-y-7">
+      <ul className="flex flex-col gap-y-7 text-sm">
         <li className="flex">
           <svg
             width="24"
