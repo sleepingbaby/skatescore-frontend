@@ -6,15 +6,15 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ variant, size, children }) => {
+const Button = ({ variant, size, children }: ButtonProps) => {
   // Define classes based on the variant and size props
-  const baseClasses = "py-2 px-4 rounded";
+  const baseClasses = "p-3 rounded-lg";
 
   let variantClasses = "";
   if (variant === "contained") {
-    variantClasses = "bg-primary text-white";
+    variantClasses = "bg-accent text-white";
   } else if (variant === "outlined") {
-    variantClasses = "border border-primary text-primary";
+    variantClasses = "border border-accent text-accent";
   }
 
   let sizeClasses = "";
