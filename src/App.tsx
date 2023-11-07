@@ -7,8 +7,6 @@ import useSupabase from "./hooks/useSupabase";
 function App() {
   const supabase = useSupabase();
 
-  console.log({ supabase });
-
   return (
     <div className="w-full flex flex-row">
       <SideNav />
