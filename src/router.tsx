@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import Home from "./pages/home";
+// import Home from "./pages/home";
+import ComponentPlayground from "./pages/ComponentPlayground";
 
 const router = createBrowserRouter([
   {
@@ -9,7 +10,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <ComponentPlayground />,
       },
       {
         path: "/g/:gameid/",

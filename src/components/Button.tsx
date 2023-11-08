@@ -8,7 +8,8 @@ interface ButtonProps {
 
 const Button = ({ variant, size, children }: ButtonProps) => {
   // Define classes based on the variant and size props
-  const baseClasses = "p-3 rounded-lg hover:bg-primary active:scale-95";
+  const baseClasses =
+    "p-3 rounded-lg hover:bg-primary active:scale-95 active:bg-opacity-80 shadow-md active:shadow-lg";
 
   let variantClasses = "";
   if (variant === "contained") {
