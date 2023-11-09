@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface PlayerChipProps {
   first_name: string;
@@ -20,12 +20,12 @@ const PlayerChip = ({ first_name, last_name, number }: PlayerChipProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: color, color: "white" }}
         className="rounded-full py-2 px-4"
       >
         #{number}
       </div>
-      <div style={{ color: color }} className="font-medium w-56">
+      <div style={{ color }} className="font-medium w-56">
         {first_name + " " + last_name}
       </div>
     </div>
@@ -36,7 +36,7 @@ export default PlayerChip;
 
 const selectColor = (str: string) => {
   let hash = 0;
-  for (var i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
 
