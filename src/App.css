@@ -53,3 +53,7 @@ small {
   font-weight: 600;
   line-height: normal;
 }
+
+input:focus-visible {
+  outline-color: #596d78;
+}
