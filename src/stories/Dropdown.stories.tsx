@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Dropdown from "../components/Dropdown";
+import Dropdown, { DropdownItem } from "../components/Dropdown";
 
 export default {
   component: Dropdown,
@@ -26,26 +26,41 @@ const FRUITS = [
   },
 ];
 
-export const Default = {
-  args: {
-    items: FRUITS,
-  },
-};
-
-export const WithState = () => {
+export const Default = () => {
   const [fruit, setFruit] = useState(FRUITS[0]);
 
-  const handleFruitChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(event.target.value);
-    setFruit(
-      FRUITS[FRUITS.findIndex((fruit) => fruit.value === event.target.value)]
-    );
+  const handleFruitChange = (item: DropdownItem) => {
+    setFruit(FRUITS[FRUITS.findIndex((fruit) => fruit.value === item.value)]);
   };
 
   return (
     <div className="flex flex-col gap-4">
       <h4>{fruit.name}</h4>
-      <Dropdown items={FRUITS} onChange={handleFruitChange} />
+      <Dropdown
+        items={FRUITS}
+        currentItem={fruit}
+        onItemSelect={handleFruitChange}
+      />
+    </div>
+  );
+};
+
+export const Large = () => {
+  const [fruit, setFruit] = useState(FRUITS[0]);
+
+  const handleFruitChange = (item: DropdownItem) => {
+    setFruit(FRUITS[FRUITS.findIndex((fruit) => fruit.value === item.value)]);
+  };
+
+  return (
+    <div className="flex flex-col gap-4">
+      <h4>{fruit.name}</h4>
+      <Dropdown
+        variant="lg"
+        items={FRUITS}
+        currentItem={fruit}
+        onItemSelect={handleFruitChange}
+      />
     </div>
   );
 };
