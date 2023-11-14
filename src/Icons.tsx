@@ -71,3 +71,27 @@ export const LeaderboardIcon = ({
     </svg>
   );
 };
+
+export const DropdownArrowIcon = ({
+  width = 20,
+  height = 20,
+  fill = "none",
+  viewBox = "0 0 20 20",
+  ...props
+}: IconProps) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox={viewBox}
+      fill={fill}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M9.29289 14.2071C9.68342 14.5976 10.3166 14.5976 10.7071 14.2071L17.0711 7.84315C17.4616 7.45262 17.4616 6.81946 17.0711 6.42893C16.6805 6.03841 16.0474 6.03841 15.6569 6.42893L10 12.0858L4.34315 6.42893C3.95262 6.03841 3.31946 6.03841 2.92893 6.42893C2.53841 6.81946 2.53841 7.45262 2.92893 7.84315L9.29289 14.2071ZM9 12.5L9 13.5L11 13.5L11 12.5L9 12.5Z"
+        fill="#596D78"
+      />
+    </svg>
+  );
+};

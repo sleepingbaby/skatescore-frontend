@@ -35,4 +35,21 @@ export default {
       sans: ["Poppins", "sans-serif"],
     },
   },
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#98A9B3",
+          secondary: "#C7D0D6",
+          accent: "#596D78",
+          neutral: "#040506",
+          "base-100": "#F9FAFB",
+          info: "#009fe9",
+          success: "#00c558",
+          warning: "#f45400",
+          error: "#e0002b",
+        },
+      },
+    ],
+  },
 };
