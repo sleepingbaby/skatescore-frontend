@@ -1,4 +1,5 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 type TextInputVariant = "md" | "lg";
 
@@ -24,7 +25,10 @@ const TextInput = ({
       type="text"
       {...props}
       placeholder={placeholder ?? "placeholder..."}
-      className={`bg-white px-3 py-2 min-w-[250px] w-fit font-normal rounded-lg border border-accent text-text ${variantClasses} ${className}`}
+      className={twMerge(
+        `bg-white px-3 py-2 min-w-[250px] w-fit font-normal rounded-lg border border-accent text-text ${variantClasses}`,
+        className
+      )}
     />
   );
 };

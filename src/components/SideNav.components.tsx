@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SideNavLink } from "./SideNav";
+import TextInput from "./TextInput";
+import ROUTES from "../routes";
 
 interface SideNavButtonProps extends SideNavLink {
   active?: boolean;
@@ -27,10 +29,25 @@ export const SideNavButton = ({
 };
 
 export const SideNavInput = () => {
+  const navigate = useNavigate();
+
+  const handleSearch = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const searchValue = (event.target.children[0] as HTMLInputElement).value;
+
+    if (searchValue) {
+      navigate(`${ROUTES.PLAYERS}?search=${searchValue}`);
+    }
+
+    (event.target.children[0] as HTMLInputElement).value = "";
+  };
+
   return (
-    <input
-      className="my-6 mx-4 px-4 py-1 h-[40px] bg-white rounded-3xl text-text focus:outline-primary transition-all"
-      placeholder="Search players..."
-    />
+    <form onSubmit={handleSearch}>
+      <TextInput
+        className="my-6 mx-4 px-4 py-1 h-[40px] bg-white rounded-3xl text-text focus:outline-primary transition-all"
+        placeholder="Search players..."
+      />
+    </form>
   );
 };
