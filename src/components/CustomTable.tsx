@@ -40,7 +40,6 @@ const CustomTable = () => {
 
     fetchData();
   }, [supabase]);
-  console.log(tableData);
   return (
     <div className="flex-1 border border-slate-500 rounded-t-lg">
       <table className="table-fixed border-spacing-0 border-separate rounded-t-lg w-full">

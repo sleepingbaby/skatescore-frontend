@@ -19,13 +19,14 @@ const SideNav = () => {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col w-[300px] py-6 bg-[#596D78] text-white">
+    <div className="flex flex-col w-[300px] h-[100vh] fixed py-6 bg-[#596D78] text-white">
       <h3 className="text-3xl px-4">SkateScore</h3>
       <SideNavInput />
       <ul className="flex flex-col gap-2 text-sm">
-        {SIDE_NAV_LINKS.map(({ icon, title, path }) => {
+        {SIDE_NAV_LINKS.map(({ icon, title, path }, i) => {
           return (
             <SideNavButton
+              key={`side-nav-link-${i}`}
               icon={icon}
               title={title}
               path={path}
