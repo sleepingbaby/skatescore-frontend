@@ -1,20 +1,6 @@
-import React, { useEffect, useContext, useState } from "react";
-import { SupabaseContext } from "../providers/SupabaseProvider";
+import { TableHeader, TableBody } from "./CustomTable.components";
 
-/*
-<CustomTable tableData={tableData}>
-  <CustomTableHead headCells={headCells} />
-  <CustomTableBody>
-    {TABLE_DATA.map((row) => <CustomTableRow>
-        <CustomTableCell>{row.date}</CustomTableRow>
-        <CustomTableCell>{row.homeTeam}</CustomTableRow>
-        <CustomTableCell>{row.awayTeam}</CustomTableRow>
-        {...rest of table cell data}
-      </CustomTableRow>}
-  </CustomTableBody>
-</CustomTable>
-*/
-
+// import { SupabaseContext } from "../providers/SupabaseProvider";
 // const supabase = useContext(SupabaseContext);
 //   const [tableData, setTableData] = useState({});
 
@@ -42,40 +28,13 @@ import { SupabaseContext } from "../providers/SupabaseProvider";
 
 //   console.log(tableData);
 const CustomTable = ({ tableData }) => {
+  const headerKeys = tableData.length > 0 ? Object.keys(tableData[0]) : [];
+
   return (
     <div className="flex-1 border border-slate-500 rounded-t-lg">
       <table className="table-fixed border-spacing-0 border-separate rounded-t-lg w-full">
-        <thead className="text-xs text-white uppercase dark:bg-accent">
-          {tableData.length > 0 && (
-            <tr className="h-10">
-              {Object.keys(tableData[0]).map((key: string, index: number) => (
-                <th
-                  key={index}
-                  className={`${
-                    index === 0
-                      ? "rounded-tl-md"
-                      : index === Object.keys(tableData[0]).length - 1
-                      ? "rounded-tr-md"
-                      : ""
-                  }`}
-                >
-                  {key}
-                </th>
-              ))}
-            </tr>
-          )}
-        </thead>
-        <tbody>
-          {tableData.map((row, rowIndex) => (
-            <tr key={rowIndex} className="hover:bg-gray-200 h-[48px]">
-              {Object.values(row).map((cell, cellIndex) => (
-                <td key={cellIndex} className="min-w-[120px] text-center py-2">
-                  <small>{cell}</small>
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
+        <TableHeader keys={headerKeys} />
+        <TableBody data={tableData} />
       </table>
     </div>
   );
