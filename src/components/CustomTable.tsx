@@ -1,33 +1,31 @@
 import { TableHeader, TableBody } from "./CustomTable.components";
 
-// import { SupabaseContext } from "../providers/SupabaseProvider";
-// const supabase = useContext(SupabaseContext);
-//   const [tableData, setTableData] = useState({});
+interface Goals {
+  first: number;
+  second: number;
+  third: number;
+  overtime: boolean;
+}
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       if (supabase) {
-//         try {
-//           const { data, error } = await supabase
-//             .from("game")
-//             .select("*")
-//             .limit(16);
-//           if (error) {
-//             console.error("Error fetching data:", error);
-//           } else {
-//             setTableData(data);
-//           }
-//         } catch (error) {
-//           console.error("An error occurred:", error);
-//         }
-//       }
-//     };
+interface RowData {
+  away_goals: Goals;
+  away_team: string;
+  date: string;
+  game_id: number;
+  home_goals: Goals;
+  home_team: string;
+  id: number;
+  overtime: boolean;
+  ref_1: string;
+  ref_2: string;
+  rink: string;
+}
 
-//     fetchData();
-//   }, [supabase]);
+interface CustomTableProps {
+  tableData: RowData[];
+}
 
-//   console.log(tableData);
-const CustomTable = ({ tableData }) => {
+const CustomTable = ({ tableData }: CustomTableProps) => {
   const headerKeys = tableData.length > 0 ? Object.keys(tableData[0]) : [];
 
   return (

@@ -1,11 +1,37 @@
 // Using this page to test out components, can be deleted when app is ready to deploy
 // Make sure to modify router path
-import React from "react";
+import { useEffect, useState, useContext } from "react";
 import Button from "../components/Button";
 import CustomTable from "../components/CustomTable";
 import PlayerChip from "../components/PlayerChip";
+import { SupabaseContext } from "../providers/SupabaseProvider";
 
 const ComponentPlayground = () => {
+  const supabase = useContext(SupabaseContext);
+  const [tableData, setTableData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (supabase) {
+        try {
+          const { data, error } = await supabase
+            .from("game")
+            .select("*")
+            .limit(16);
+          if (error) {
+            console.error("Error fetching data:", error);
+          } else {
+            setTableData(data);
+          }
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [supabase]);
+  console.log(tableData);
   return (
     <div className="flex flex-col flex-1 p-8 bg-white text-black space-y-4 ">
       Component Playground
@@ -30,7 +56,7 @@ const ComponentPlayground = () => {
         <PlayerChip first_name="Zacharie" last_name="Jones" number={22} />
         <PlayerChip first_name="Garrett" last_name="Weng" number={69} />
       </div>
-      <CustomTable />
+      <CustomTable tableData={tableData} />
     </div>
   );
 };
