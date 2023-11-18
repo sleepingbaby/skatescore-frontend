@@ -9,6 +9,31 @@ import { SupabaseContext } from "../providers/SupabaseProvider";
 const ComponentPlayground = () => {
   const supabase = useContext(SupabaseContext);
   const [tableData, setTableData] = useState([]);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (supabase) {
+        try {
+          const { data, error } = await supabase
+            .from("game")
+            .select("*", { count: "exact" });
+          if (error) {
+            console.error("Error fetching data:", error);
+          } else {
+            if (data) {
+              setCount(data.length);
+            }
+          }
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
+      }
+    };
+    fetchData();
+  }, [supabase]);
+
+  console.log(count);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,11 +42,14 @@ const ComponentPlayground = () => {
           const { data, error } = await supabase
             .from("game")
             .select("*")
+            .order("date", { ascending: false })
             .limit(16);
           if (error) {
             console.error("Error fetching data:", error);
           } else {
-            setTableData(data);
+            if (data) {
+              setTableData(data);
+            }
           }
         } catch (error) {
           console.error("An error occurred:", error);
@@ -31,7 +59,7 @@ const ComponentPlayground = () => {
 
     fetchData();
   }, [supabase]);
-  console.log(tableData);
+
   return (
     <div className="flex flex-col flex-1 p-8 bg-white text-black space-y-4 ">
       Component Playground

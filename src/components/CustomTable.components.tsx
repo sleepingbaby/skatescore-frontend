@@ -26,7 +26,11 @@ export const TableHeader = ({ keys }) => (
     {keys.length > 0 && (
       <tr className="h-10">
         {keys.map((key: string, index: number) =>
-          key === "overtime" ? null : (
+          key === "overtime" ||
+          key === "id" ||
+          key === "game_id" ||
+          key === "ref_1" ||
+          key === "ref_2" ? null : (
             <th
               key={index}
               className={`${
@@ -51,7 +55,11 @@ export const TableBody = ({ data }: { data: RowData[] }) => (
     {data.map((row, rowIndex) => (
       <tr key={rowIndex} className="hover:bg-gray-200 h-[48px]">
         {Object.entries(row).map(([key, cell], cellIndex) =>
-          key === "overtime" ? null : (
+          key === "overtime" ||
+          key === "id" ||
+          key === "game_id" ||
+          key === "ref_1" ||
+          key === "ref_2" ? null : (
             <td key={cellIndex} className="min-w-[120px] text-center py-2">
               {key === "date" ? (
                 <small>{new Date(row[key]).toLocaleDateString()}</small>

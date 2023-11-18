@@ -30,7 +30,7 @@ const CustomTable = ({ tableData }: CustomTableProps) => {
 
   return (
     <div className="flex-1 border border-slate-500 rounded-t-lg">
-      <table className="table-fixed border-spacing-0 border-separate rounded-t-lg w-full">
+      <table className="table-auto border-spacing-0 border-separate rounded-t-lg w-full">
         <TableHeader keys={headerKeys} />
         <TableBody data={tableData} />
       </table>
