@@ -9,7 +9,17 @@ import { SupabaseContext } from "../providers/SupabaseProvider";
 const ComponentPlayground = () => {
   const supabase = useContext(SupabaseContext);
   const [tableData, setTableData] = useState([]);
-  const [count, setCount] = useState(0);
+  const [numResults, setNumResults] = useState(0);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(16);
+
+  const handleNext = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePrevious = () => {
+    setPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +32,7 @@ const ComponentPlayground = () => {
             console.error("Error fetching data:", error);
           } else {
             if (data) {
-              setCount(data.length);
+              setNumResults(data.length);
             }
           }
         } catch (error) {
@@ -31,9 +41,7 @@ const ComponentPlayground = () => {
       }
     };
     fetchData();
-  }, [supabase]);
-
-  console.log(count);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +51,7 @@ const ComponentPlayground = () => {
             .from("game")
             .select("*")
             .order("date", { ascending: false })
-            .limit(16);
+            .range((page - 1) * perPage, page * perPage - 1);
           if (error) {
             console.error("Error fetching data:", error);
           } else {
@@ -58,7 +66,7 @@ const ComponentPlayground = () => {
     };
 
     fetchData();
-  }, [supabase]);
+  }, [page]);
 
   return (
     <div className="flex flex-col flex-1 p-8 bg-white text-black space-y-4 ">
@@ -85,6 +93,12 @@ const ComponentPlayground = () => {
         <PlayerChip first_name="Garrett" last_name="Weng" number={69} />
       </div>
       <CustomTable tableData={tableData} />
+      <div className="flex justify-center w-full gap-8">
+        {page > 1 && <button onClick={handlePrevious}>Previous</button>}
+        {numResults > page * perPage && (
+          <button onClick={handleNext}>Next</button>
+        )}
+      </div>
     </div>
   );
 };
