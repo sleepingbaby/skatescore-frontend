@@ -94,9 +94,9 @@ const ComponentPlayground = () => {
       </div>
       <CustomTable tableData={tableData} />
       <div className="flex justify-center w-full gap-8">
-        {page > 1 && <button onClick={handlePrevious}>Previous</button>}
+        {page > 1 && <button onClick={handlePrevious}>Previous Page</button>}
         {numResults > page * perPage && (
-          <button onClick={handleNext}>Next</button>
+          <button onClick={handleNext}>Next Page</button>
         )}
       </div>
     </div>
