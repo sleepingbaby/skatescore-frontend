@@ -11,7 +11,6 @@ const ComponentPlayground = () => {
   const [tableData, setTableData] = useState([]);
   const [numResults, setNumResults] = useState(0);
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(16);
 
   const handleNext = () => {
     setPage((prevPage) => prevPage + 1);
@@ -51,13 +50,11 @@ const ComponentPlayground = () => {
             .from("game")
             .select("*")
             .order("date", { ascending: false })
-            .range((page - 1) * perPage, page * perPage - 1);
+            .range((page - 1) * 16, page * 16 - 1); // 16 results per page
           if (error) {
             console.error("Error fetching data:", error);
           } else {
-            if (data) {
-              setTableData(data);
-            }
+            setTableData(data);
           }
         } catch (error) {
           console.error("An error occurred:", error);
@@ -66,7 +63,7 @@ const ComponentPlayground = () => {
     };
 
     fetchData();
-  }, [page]);
+  }, [page, supabase]);
 
   return (
     <div className="flex flex-col flex-1 p-8 bg-white text-black space-y-4 ">
@@ -95,7 +92,7 @@ const ComponentPlayground = () => {
       <CustomTable tableData={tableData} />
       <div className="flex justify-center w-full gap-8">
         {page > 1 && <button onClick={handlePrevious}>Previous Page</button>}
-        {numResults > page * perPage && (
+        {numResults > page * 16 && (
           <button onClick={handleNext}>Next Page</button>
         )}
       </div>
